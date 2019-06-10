@@ -36,6 +36,24 @@ func (v Version) stringBuilder() string {
 	return ss.String()
 }
 
+func (v Version) stringBuilderFull() string {
+	var ss strings.Builder
+	ss.WriteString(strconv.Itoa(v.Major))
+	ss.WriteRune('.')
+	ss.WriteString(strconv.Itoa(v.Minor))
+	ss.WriteRune('.')
+	ss.WriteString(strconv.Itoa(v.Patch))
+	if v.Build != "" {
+		ss.WriteString("+")
+		ss.WriteString(v.Build)
+	}
+	if v.PreRelease != "" {
+		ss.WriteString("-")
+		ss.WriteString(v.PreRelease)
+	}
+	return ss.String()
+}
+
 func (v Version) sprintf() string {
 	s := fmt.Sprintf("%d.%d.%d", v.Major, v.Minor, v.Patch)
 	if v.Build != "" {
