@@ -64,3 +64,18 @@ func (v Version) sprintf() string {
 	}
 	return s
 }
+
+func (v Version) sprintf2() string {
+	maj := strconv.Itoa(v.Major)
+	min := strconv.Itoa(v.Minor)
+	pat := strconv.Itoa(v.Patch)
+
+	s := fmt.Sprintf("%s.%s.%s", maj, min, pat)
+	if v.Build != "" {
+		s = fmt.Sprintf("%s+%s", s, v.Build)
+	}
+	if v.PreRelease != "" {
+		s = fmt.Sprintf("%s-%s", s, v.PreRelease)
+	}
+	return s
+}

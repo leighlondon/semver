@@ -34,5 +34,11 @@ func TestStringFormatting(t *testing.T) {
 					actual, s.expected, s.version)
 			}
 		})
+		t.Run("sprintf2/"+s.expected, func(t *testing.T) {
+			if actual := s.version.sprintf2(); actual != s.expected {
+				t.Errorf("got='%s' expected='%s' %#v",
+					actual, s.expected, s.version)
+			}
+		})
 	}
 }
