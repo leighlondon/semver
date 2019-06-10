@@ -5,7 +5,8 @@ import (
 	"strings"
 )
 
-// Version ...
+// Version represents a semver version, with version numbers and optional
+// build and prerelease metadata.
 type Version struct {
 	Major      int
 	Minor      int
