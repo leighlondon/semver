@@ -22,6 +22,12 @@ func TestStringFormatting(t *testing.T) {
 					actual, s.expected, s.version)
 			}
 		})
+		t.Run("builderfull/"+s.expected, func(t *testing.T) {
+			if actual := s.version.stringBuilderFull(); actual != s.expected {
+				t.Errorf("got='%s' expected='%s' %#v",
+					actual, s.expected, s.version)
+			}
+		})
 		t.Run("sprintf/"+s.expected, func(t *testing.T) {
 			if actual := s.version.sprintf(); actual != s.expected {
 				t.Errorf("got='%s' expected='%s' %#v",
