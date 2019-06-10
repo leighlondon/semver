@@ -1,8 +1,17 @@
 package semver
 
 import (
+	"fmt"
 	"testing"
 )
+
+func TestStringConversion(t *testing.T) {
+	v := Version{Major: 1}
+	ex := "1.0.0"
+	if s := fmt.Sprintf("%s", v); s != ex {
+		t.Errorf("expected formatting, got '%s'", s)
+	}
+}
 
 func TestStringFormatting(t *testing.T) {
 	samples := []struct {
