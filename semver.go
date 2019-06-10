@@ -1,6 +1,7 @@
 package semver // import "github.com/leighlondon/semver"
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -16,6 +17,10 @@ type Version struct {
 }
 
 func (v Version) String() string {
+	return v.stringBuilder()
+}
+
+func (v Version) stringBuilder() string {
 	var ss strings.Builder
 	ss.WriteString(strconv.Itoa(v.Major))
 	ss.WriteRune('.')
@@ -29,4 +34,15 @@ func (v Version) String() string {
 		ss.WriteString("-" + v.PreRelease)
 	}
 	return ss.String()
+}
+
+func (v Version) sprintf() string {
+	s := fmt.Sprintf("%d.%d.%d", v.Major, v.Minor, v.Patch)
+	if v.Build != "" {
+		s = fmt.Sprintf("%s+%s", s, v.Build)
+	}
+	if v.PreRelease != "" {
+		s = fmt.Sprintf("%s-%s", s, v.PreRelease)
+	}
+	return s
 }
