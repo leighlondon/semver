@@ -17,13 +17,13 @@ func TestStringFormatting(t *testing.T) {
 
 	for _, s := range samples {
 		t.Run("builder/"+s.expected, func(t *testing.T) {
-			if actual := s.version.stringBuilder(); actual != s.expected {
+			if actual := s.version.builder(); actual != s.expected {
 				t.Errorf("got='%s' expected='%s' %#v",
 					actual, s.expected, s.version)
 			}
 		})
-		t.Run("builderfull/"+s.expected, func(t *testing.T) {
-			if actual := s.version.stringBuilderFull(); actual != s.expected {
+		t.Run("builder2/"+s.expected, func(t *testing.T) {
+			if actual := s.version.builder2(); actual != s.expected {
 				t.Errorf("got='%s' expected='%s' %#v",
 					actual, s.expected, s.version)
 			}

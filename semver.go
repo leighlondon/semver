@@ -17,10 +17,10 @@ type Version struct {
 }
 
 func (v Version) String() string {
-	return v.stringBuilder()
+	return v.builder2()
 }
 
-func (v Version) stringBuilder() string {
+func (v Version) builder() string {
 	var ss strings.Builder
 	ss.WriteString(strconv.Itoa(v.Major))
 	ss.WriteRune('.')
@@ -36,7 +36,7 @@ func (v Version) stringBuilder() string {
 	return ss.String()
 }
 
-func (v Version) stringBuilderFull() string {
+func (v Version) builder2() string {
 	var ss strings.Builder
 	ss.WriteString(strconv.Itoa(v.Major))
 	ss.WriteRune('.')
